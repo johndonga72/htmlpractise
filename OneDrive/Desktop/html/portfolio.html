@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>John Babu • Portfolio</title>
+    <meta name="description" content="Personal portfolio showcasing projects, skills, and contact information." />
+    <meta name="author" content="John Babu" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        /* ===== CSS RESET ===== */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        * {
+            margin: 0;
+        }
+
+        html:focus-within {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        img,
+        picture,
+        video,
+        canvas,
+        svg {
+            display: block;
+            max-width: 100%;
+        }
+
+        input,
+        button,
+        textarea,
+        select {
+            font: inherit;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* ===== THEME ===== */
+        :root {
+            --bg: #0b1020;
+            --surface: #11162a;
+            --muted: #a9b0c0;
+            --text: #e6eaf2;
+            --primary: #7c5cff;
+            --primary-2: #5bd3c7;
+            --accent: #ffd166;
+            --ring: rgba(124, 92, 255, 0.45);
+            --card: #0f1427;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+            --radius: 16px;
+            --maxw: 1100px;
+        }
+
+        @media (prefers-color-scheme: light) {
+            :root {
+                --bg: #f6f7fb;
+                --surface: #ffffff;
+                --text: #1d2333;
+                --muted: #5a6477;
+                --card: #ffffff;
+                --shadow: 0 12px 32px rgba(17, 23, 46, 0.08);
+            }
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+            background: radial-gradient(1200px 600px at 80% -10%, rgba(124, 92, 255, 0.22), transparent),
+                radial-gradient(1000px 600px at -10% -10%, rgba(91, 211, 199, 0.18), transparent),
+                var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: min(92%, var(--maxw));
+            margin-inline: auto;
+        }
+
+        .section {
+            padding: 72px 0;
+        }
+
+        .title {
+            font-size: clamp(24px, 3vw, 36px);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .subtitle {
+            color: var(--muted);
+            max-width: 70ch;
+        }
+
+        /* ===== NAVBAR ===== */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            backdrop-filter: blur(10px);
+            background: color-mix(in oklab, var(--bg) 60%, transparent);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 0;
+        }
+
+        .brand {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            font-weight: 800;
+            letter-spacing: 0.3px;
+        }
+
+        .brand .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--primary-2));
+            box-shadow: 0 0 0 6px rgba(124, 92, 255, 0.15);
+        }
+
+        .menu {
+            display: flex;
+            gap: 22px;
+            align-items: center;
+        }
+
+        .menu a {
+            color: var(--muted);
+            font-weight: 500;
+        }
+
+        .menu a:hover,
+        .menu a:focus {
+            color: var(--text);
+        }
+
+        .hire {
+            padding: 10px 14px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-2));
+            color: #0d1020;
+            font-weight: 700;
+            box-shadow: var(--shadow);
+        }
+
+        /* Mobile menu (checkbox hack) */
+        #nav-toggle {
+            display: none;
+        }
+
+        .burger {
+            display: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .burger span,
+        .burger span::before,
+        .burger span::after {
+            content: "";
+            display: block;
+            width: 18px;
+            height: 2px;
+            background: var(--text);
+            position: relative;
+            transition: 200ms ease;
+        }
+
+        .burger span::before {
+            position: absolute;
+            top: -6px;
+        }
+
+        .burger span::after {
+            position: absolute;
+            top: 6px;
+        }
+
+        @media (max-width: 800px) {
+            .menu {
+                position: fixed;
+                inset: 64px 16px auto 16px;
+                background: var(--surface);
+                border: 1px solid rgba(255, 255, 255, 0.08);
+                border-radius: var(--radius);
+                flex-direction: column;
+                padding: 16px;
+                box-shadow: var(--shadow);
+                display: none;
+            }
+
+            .burger {
+                display: inline-flex;
+            }
+
+            #nav-toggle:checked~.menu {
+                display: flex;
+            }
+
+            #nav-toggle:checked+label .burger span {
+                background: transparent;
+            }
+
+            #nav-toggle:checked+label .burger span::before {
+                transform: translateY(6px) rotate(45deg);
+            }
+
+            #nav-toggle:checked+label .burger span::after {
+                transform: translateY(-6px) rotate(-45deg);
+            }
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr;
+            gap: 32px;
+            align-items: center;
+            padding: 56px 0 40px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 12px;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: var(--muted);
+        }
+
+        .badge .pulse {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 0 0 var(--ring);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            70% {
+                box-shadow: 0 0 0 10px rgba(124, 92, 255, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(124, 92, 255, 0);
+            }
+        }
+
+        .hero h1 {
+            font-size: clamp(32px, 6vw, 56px);
+            line-height: 1.05;
+            letter-spacing: -0.02em;
+            margin-top: 14px;
+        }
+
+        .hero p {
+            color: var(--muted);
+            margin: 14px 0 22px;
+            max-width: 60ch;
+        }
+
+        .cta {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 16px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            font-weight: 600;
+        }
+
+        .btn.primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-2));
+            color: #0d1020;
+            border: none;
+            box-shadow: var(--shadow);
+        }
+
+        .btn.ghost:hover {
+            border-color: rgba(255, 255, 255, 0.25);
+        }
+
+        .hero-card {
+            background: linear-gradient(180deg, color-mix(in oklab, var(--surface) 85%, transparent) 0%, var(--card) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 22px;
+            padding: 22px;
+            box-shadow: var(--shadow);
+        }
+
+        .hero-card img {
+            width: 100%;
+            border-radius: 16px;
+            aspect-ratio: 4 / 3;
+            object-fit: cover;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+            margin-top: 14px;
+        }
+
+        .stat {
+            background: var(--surface);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 14px;
+            padding: 14px;
+            text-align: center;
+        }
+
+        .stat b {
+            font-size: 18px;
+        }
+
+        @media (max-width: 900px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== SKILLS ===== */
+        .chips {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 14px;
+        }
+
+        .chip {
+            padding: 8px 12px;
+            border-radius: 999px;
+            background: var(--surface);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            font-weight: 600;
+            color: var(--muted);
+        }
+
+        /* ===== PROJECTS ===== */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 18px;
+            overflow: hidden;
+            transition: transform .18s ease, box-shadow .18s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow);
+        }
+
+        .card img {
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding: 14px;
+        }
+
+        .card h3 {
+            font-size: 18px;
+            margin-bottom: 6px;
+        }
+
+        .tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .tag {
+            font-size: 12px;
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: rgba(124, 92, 255, 0.14);
+            color: #d7cdff;
+            border: 1px solid rgba(124, 92, 255, 0.25);
+        }
+
+        .tag.alt {
+            background: rgba(91, 211, 199, 0.14);
+            color: #d8fffb;
+            border-color: rgba(91, 211, 199, 0.25);
+        }
+
+        @media (max-width: 900px) {
+            .grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== TIMELINE ===== */
+        .timeline {
+            position: relative;
+            margin-top: 20px;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 12px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .tl-item {
+            position: relative;
+            padding-left: 42px;
+            margin-bottom: 26px;
+        }
+
+        .tl-item::before {
+            content: "";
+            position: absolute;
+            left: 3px;
+            top: 2px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--primary-2));
+            box-shadow: 0 0 0 6px rgba(124, 92, 255, 0.12);
+        }
+
+        .tl-item h4 {
+            margin-bottom: 4px;
+        }
+
+        .tl-item small {
+            color: var(--muted);
+        }
+
+        /* ===== CONTACT ===== */
+        form {
+            display: grid;
+            gap: 12px;
+            max-width: 640px;
+        }
+
+        .field {
+            display: grid;
+            gap: 6px;
+        }
+
+        label {
+            color: var(--muted);
+            font-weight: 600;
+        }
+
+        input,
+        textarea {
+            background: var(--surface);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 12px;
+            padding: 12px 14px;
+            color: var(--text);
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: 2px solid var(--ring);
+            border-color: transparent;
+        }
+
+        textarea {
+            min-height: 140px;
+            resize: vertical;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 26px 0 40px;
+            color: var(--muted);
+        }
+
+        .socials {
+            display: flex;
+            gap: 12px;
+        }
+
+        .socials a {
+            padding: 8px 12px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 999px;
+        }
+
+        /* ===== PRINT (optional) ===== */
+        @media print {
+
+            header,
+            .hero-card,
+            .cta .btn.ghost {
+                display: none !important;
+            }
+
+            body {
+                background: #fff;
+                color: #000;
+            }
+
+            .section {
+                padding: 16px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ===== NAVBAR ===== -->
+    <header>
+        <div class="container nav">
+            <div class="brand"><span class="dot"></span> <span>John Babu</span></div>
+
+            <input type="checkbox" id="nav-toggle" aria-label="Open navigation" />
+            <label for="nav-toggle" aria-hidden="true">
+                <div class="burger" role="button" tabindex="0"><span></span></div>
+            </label>
+
+            <nav class="menu" aria-label="Primary">
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#experience">Experience</a>
+                <a href="#contact">Contact</a>
+                <a class="hire" href="mailto:youremail@example.com?subject=Hiring%20Inquiry">Hire Me</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===== HERO ===== -->
+    <main class="container">
+        <section class="hero" id="home" aria-label="Introduction">
+            <div>
+                <div class="badge"><span class="pulse"></span> Available for internships & freelance</div>
+                <h1>Hi, I'm <span
+                        style="background: linear-gradient(135deg, var(--primary), var(--primary-2)); -webkit-background-clip: text; background-clip: text; color: transparent;">John
+                        Babu</span> — Front‑End Developer.</h1>
+                <p>I craft fast, accessible, and responsive websites. Passionate about clean UI and developer‑friendly
+                    UX. Currently exploring CSS animations and component systems.</p>
+                <div class="cta">
+                    <a class="btn primary" href="#projects">View Projects</a>
+                    <a class="btn ghost" href="https://github.com/yourusername" target="_blank"
+                        rel="noreferrer">GitHub</a>
+                    <a class="btn ghost" href="https://www.linkedin.com/in/yourusername" target="_blank"
+                        rel="noreferrer">LinkedIn</a>
+                </div>
+                <div class="chips" style="margin-top:18px;">
+                    <span class="chip">HTML5</span>
+                    <span class="chip">CSS3</span>
+                    <span class="chip">Responsive Design</span>
+                    <span class="chip">Flexbox</span>
+                    <span class="chip">Grid</span>
+                    <span class="chip">Accessibility</span>
+                </div>
+            </div>
+            <aside class="hero-card" aria-label="Preview image">
+                <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1200&auto=format&fit=crop"
+                    alt="Laptop, notebook, and code on screen" />
+                <div class="stats">
+                    <div class="stat"><b>10+</b>
+                        <div>Projects</div>
+                    </div>
+                    <div class="stat"><b>5</b>
+                        <div>Certificates</div>
+                    </div>
+                    <div class="stat"><b>2</b>
+                        <div>Hackathons</div>
+                    </div>
+                </div>
+            </aside>
+        </section>
+
+        <!-- ===== ABOUT ===== -->
+        <section id="about" class="section" aria-labelledby="about-title">
+            <h2 class="title" id="about-title">About</h2>
+            <p class="subtitle" style="margin-top:8px;">I'm a front‑end developer focused on building clean,
+                user‑centric interfaces. I started with basic HTML & CSS and now design responsive layouts using
+                Flexbox, Grid, and modern CSS features. I enjoy turning ideas into pixel‑perfect websites.</p>
+        </section>
+
+        <!-- ===== SKILLS ===== -->
+        <section id="skills" class="section" aria-labelledby="skills-title">
+            <h2 class="title" id="skills-title">Skills</h2>
+            <div class="chips">
+                <span class="chip">HTML5 (Semantic)</span>
+                <span class="chip">CSS3</span>
+                <span class="chip">Flexbox & Grid</span>
+                <span class="chip">Responsive Design</span>
+                <span class="chip">Accessibility (WCAG)</span>
+                <span class="chip">Figma to HTML</span>
+                <span class="chip">Git & GitHub</span>
+                <span class="chip">SEO Basics</span>
+            </div>
+        </section>
+
+        <!-- ===== PROJECTS ===== -->
+        <section id="projects" class="section" aria-labelledby="projects-title">
+            <h2 class="title" id="projects-title">Featured Projects</h2>
+            <p class="subtitle" style="margin:8px 0 18px;">A selection of projects that highlight my HTML and CSS
+                skills. Replace links and images with your own.</p>
+            <div class="grid" role="list">
+                <article class="card" role="listitem">
+                    <img src="https://images.unsplash.com/photo-1519074002996-a69e7ac46a42?q=80&w=1200&auto=format&fit=crop"
+                        alt="Landing page preview" />
+                    <div class="card-body">
+                        <h3>Product Landing Page</h3>
+                        <p>A responsive product site with hero, features, pricing, and CTA sections.</p>
+                        <div class="tags"><span class="tag">HTML</span><span class="tag alt">CSS</span><span
+                                class="tag">Grid</span></div>
+                        <p style="margin-top:10px;"><a href="#" class="btn" style="display:inline-flex">Live Demo</a> <a
+                                href="#" class="btn" style="display:inline-flex; margin-left:8px;">Source</a></p>
+                    </div>
+                </article>
+                <article class="card" role="listitem">
+                    <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?q=80&w=1200&auto=format&fit=crop"
+                        alt="Portfolio gallery preview" />
+                    <div class="card-body">
+                        <h3>Image Gallery</h3>
+                        <p>Masonry‑style gallery with hover effects and responsive columns.</p>
+                        <div class="tags"><span class="tag">Flexbox</span><span class="tag alt">CSS Effects</span></div>
+                        <p style="margin-top:10px;"><a href="#" class="btn" style="display:inline-flex">Live Demo</a> <a
+                                href="#" class="btn" style="display:inline-flex; margin-left:8px;">Source</a></p>
+                    </div>
+                </article>
+                <article class="card" role="listitem">
+                    <img src="https://images.unsplash.com/photo-1526378722484-bd91ca387e72?q=80&w=1200&auto=format&fit=crop"
+                        alt="Pricing table preview" />
+                    <div class="card-body">
+                        <h3>Pricing Page</h3>
+                        <p>Accessible pricing table with highlighted plan and comparison features.</p>
+                        <div class="tags"><span class="tag">Semantic HTML</span><span class="tag alt">CSS Grid</span>
+                        </div>
+                        <p style="margin-top:10px;"><a href="#" class="btn" style="display:inline-flex">Live Demo</a> <a
+                                href="#" class="btn" style="display:inline-flex; margin-left:8px;">Source</a></p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- ===== EXPERIENCE / EDUCATION ===== -->
+        <section id="experience" class="section" aria-labelledby="experience-title">
+            <h2 class="title" id="experience-title">Experience & Education</h2>
+            <div class="timeline" aria-label="Timeline">
+                <div class="tl-item">
+                    <h4>Front‑End Trainee — Self Learning</h4>
+                    <small>2024 – Present</small>
+                    <p>Practicing responsive design, component systems, and accessibility with real projects.</p>
+                </div>
+                <div class="tl-item">
+                    <h4>Diploma — Electrical & Electronics Engineering</h4>
+                    <small>2019 – 2022</small>
+                    <p>Completed diploma focusing on fundamentals of engineering and problem‑solving.</p>
+                </div>
+            </div>
+            <p class="subtitle" style="margin-top:10px;">Download my resume: <a class="btn" href="#"
+                    download>Resume.pdf</a></p>
+        </section>
+
+        <!-- ===== CONTACT ===== -->
+        <section id="contact" class="section" aria-labelledby="contact-title">
+            <h2 class="title" id="contact-title">Contact</h2>
+            <p class="subtitle" style="margin-bottom:14px;">Have a project in mind or want to collaborate? Send a
+                message below or email <a href="mailto:youremail@example.com">youremail@example.com</a>.</p>
+            <form action="https://formsubmit.co/youremail@example.com" method="POST">
+                <!-- Replace the action URL with your form handler or mailto link -->
+                <input type="hidden" name="_captcha" value="false">
+                <div class="field">
+                    <label for="name">Name</label>
+                    <input id="name" name="name" type="text" placeholder="Your name" required />
+                </div>
+                <div class="field">
+                    <label for="email">Email</label>
+                    <input id="email" name="email" type="email" placeholder="you@example.com" required />
+                </div>
+                <div class="field">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" placeholder="Tell me about your project..."
+                        required></textarea>
+                </div>
+                <button class="btn primary" type="submit">Send Message</button>
+            </form>
+            <div style="margin-top:16px; display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+                <div class="socials">
+                    <a href="https://github.com/yourusername" target="_blank" rel="noreferrer">GitHub</a>
+                    <a href="https://www.linkedin.com/in/yourusername" target="_blank" rel="noreferrer">LinkedIn</a>
+                    <a href="https://twitter.com/yourusername" target="_blank" rel="noreferrer">Twitter</a>
+                    <a href="https://yourblog.example.com" target="_blank" rel="noreferrer">Blog</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container"
+            style="display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;">
+            <div>© <span id="year"></span> John Babu. All rights reserved.</div>
+            <div>Built with <span aria-hidden="true">❤️</span> using HTML & CSS.</div>
+        </div>
+    </footer>
+
+    <script>
+        // Update year
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+
+</html>

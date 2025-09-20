@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Card UI</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f2f5;
+        }
+
+        .card {
+            background: #fff;
+            width: 320px;
+            border-radius: 15px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            text-align: center;
+            padding: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+        }
+
+        .card img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #0b3d91;
+            margin-top: 10px;
+        }
+
+        .card h2 {
+            margin: 15px 0 5px;
+            color: #0b3d91;
+        }
+
+        .card p.title {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .card p.bio {
+            font-size: 0.9rem;
+            color: #666;
+            padding: 0 10px;
+            margin-bottom: 20px;
+        }
+
+        .card .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .card .social-icons a {
+            text-decoration: none;
+            color: #0b3d91;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+
+        .card .social-icons a:hover {
+            color: #ff9800;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="card">
+        <img src="https://via.placeholder.com/100" alt="Profile Picture">
+        <h2>John Doe</h2>
+        <p class="title">Web Developer</p>
+        <p class="bio">Passionate developer with experience in creating responsive websites and modern web applications.
+        </p>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+    </div>
+</body>
+
+</html>

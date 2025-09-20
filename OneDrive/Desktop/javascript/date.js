@@ -1,0 +1,5 @@
+// var days = new Date()
+// document.write(days.getMonth())
+var days = new Date()
+days.setMonth(1)
+document.write(days)

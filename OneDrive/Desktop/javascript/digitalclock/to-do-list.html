@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List with Edit & Filters</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #222;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .todo-container {
+            background: #333;
+            padding: 20px;
+            border-radius: 15px;
+            width: 380px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        #task-input {
+            width: 70%;
+            padding: 8px;
+            border: none;
+            border-radius: 8px;
+        }
+
+        #add-btn {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 8px;
+            background: orange;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .filters {
+            margin-top: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .filters button {
+            flex: 1;
+            margin: 0 5px;
+            padding: 6px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .filters button.active {
+            background: orange;
+            color: black;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 15px;
+        }
+
+        li {
+            background: #444;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        li.completed {
+            text-decoration: line-through;
+            color: gray;
+        }
+
+        .delete-btn {
+            background: red;
+            border: none;
+            color: white;
+            padding: 5px 8px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input.edit-input {
+            width: 80%;
+            padding: 6px;
+            border: none;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="todo-container">
+        <h2>My To-Do List</h2>
+        <input type="text" id="task-input" placeholder="Enter a task">
+        <button id="add-btn">Add</button>
+
+        <div class="filters">
+            <button id="all" class="active">All</button>
+            <button id="pending">Pending</button>
+            <button id="completed">Completed</button>
+        </div>
+
+        <ul id="task-list"></ul>
+    </div>
+
+    <script>
+        const taskInput = document.getElementById("task-input");
+        const addBtn = document.getElementById("add-btn");
+        const taskList = document.getElementById("task-list");
+        const filterBtns = document.querySelectorAll(".filters button");
+
+        // Add Task
+        addBtn.addEventListener("click", () => {
+            if (taskInput.value.trim() === "") return;
+            createTask(taskInput.value);
+            taskInput.value = "";
+        });
+
+        // Function to create a new task
+        function createTask(taskText) {
+            const li = document.createElement("li");
+            li.textContent = taskText;
+
+            // Mark completed on click
+            li.addEventListener("click", () => {
+                li.classList.toggle("completed");
+            });
+
+            // Edit task on double click
+            li.addEventListener("dblclick", () => {
+                const currentText = li.firstChild.textContent;
+                const input = document.createElement("input");
+                input.type = "text";
+                input.value = currentText;
+                input.className = "edit-input";
+
+                li.textContent = "";
+                li.appendChild(input);
+
+                input.focus();
+
+                input.addEventListener("blur", () => {
+                    li.textContent = input.value || currentText;
+                    li.appendChild(delBtn);
+                });
+
+                input.addEventListener("keydown", (e) => {
+                    if (e.key === "Enter") {
+                        input.blur();
+                    }
+                });
+            });
+
+            // Delete button
+            const delBtn = document.createElement("button");
+            delBtn.textContent = "X";
+            delBtn.className = "delete-btn";
+            delBtn.addEventListener("click", (e) => {
+                e.stopPropagation();
+                li.remove();
+            });
+
+            li.appendChild(delBtn);
+            taskList.appendChild(li);
+        }
+
+        // Filters
+        filterBtns.forEach(btn => {
+            btn.addEventListener("click", () => {
+                document.querySelector(".filters .active").classList.remove("active");
+                btn.classList.add("active");
+
+                const tasks = taskList.querySelectorAll("li");
+                tasks.forEach(task => {
+                    switch (btn.id) {
+                        case "all":
+                            task.style.display = "flex";
+                            break;
+                        case "pending":
+                            task.style.display = task.classList.contains("completed") ? "none" : "flex";
+                            break;
+                        case "completed":
+                            task.style.display = task.classList.contains("completed") ? "flex" : "none";
+                            break;
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

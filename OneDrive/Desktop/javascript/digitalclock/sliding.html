@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sliding Window Visualizer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: #f4f4f9;
+            height: 100vh;
+            justify-content: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        .array {
+            display: flex;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .box {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid black;
+            border-radius: 8px;
+            font-weight: bold;
+            background: white;
+        }
+
+        .highlight {
+            background: lightgreen;
+            border: 2px solid darkgreen;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background: #007bff;
+            color: white;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Sliding Window Demo</h2>
+    <div class="array" id="array"></div>
+    <button onclick="startSliding()">Start Sliding</button>
+
+    <script>
+        const arr = [2, 1, 5, 1, 3, 2];
+        const k = 3; // window size
+        const arrayContainer = document.getElementById("array");
+
+        // Render initial array
+        arr.forEach(num => {
+            let div = document.createElement("div");
+            div.classList.add("box");
+            div.innerText = num;
+            arrayContainer.appendChild(div);
+        });
+
+        let currentIndex = 0;
+        let interval;
+
+        function startSliding() {
+            clearInterval(interval);
+            currentIndex = 0;
+
+            interval = setInterval(() => {
+                // Clear all highlights
+                document.querySelectorAll(".box").forEach(box => box.classList.remove("highlight"));
+
+                // Highlight the sliding window
+                for (let i = currentIndex; i < currentIndex + k && i < arr.length; i++) {
+                    document.querySelectorAll(".box")[i].classList.add("highlight");
+                }
+
+                currentIndex++;
+                if (currentIndex > arr.length - k) {
+                    clearInterval(interval);
+                }
+            }, 1000); // move every 1 second
+        }
+    </script>
+</body>
+
+</html>

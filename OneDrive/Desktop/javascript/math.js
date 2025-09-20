@@ -1,0 +1,6 @@
+//const number = Math.ceil(10.99)
+//document.write(number)
+//const number = Math.round(0.2)
+//document.write(number)
+const number = Math.floor(Math.random() * 10)
+document.write(number)

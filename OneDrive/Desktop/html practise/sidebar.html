@@ -1,0 +1,175 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>MY First Project</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            /* sidebar + main side by side */
+        }
+
+        /* Sidebar navigation */
+        nav.sidebar {
+            width: 200px;
+            background-color: black;
+            color: white;
+            height: 100vh;
+            /* full height */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 20px;
+            position: fixed;
+            /* stays while scrolling */
+            left: 0;
+            top: 0;
+        }
+
+        nav.sidebar h2 {
+            margin: 0 0 20px 0;
+            font-size: 18px;
+        }
+
+        nav.sidebar a {
+            text-decoration: none;
+            background-color: red;
+            color: white;
+            padding: 10px 15px;
+            margin: 8px 0;
+            border-radius: 5px;
+            width: 80%;
+            text-align: center;
+        }
+
+        nav.sidebar a:hover {
+            background-color: darkred;
+        }
+
+        /* Main content area */
+        main {
+            margin-left: 200px;
+            /* space for sidebar */
+            padding: 20px;
+            flex: 1;
+        }
+
+        /* Two-column layout */
+        section.content-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .content {
+            flex: 2;
+        }
+
+        .image {
+            flex: 1;
+            text-align: right;
+        }
+
+        .image img {
+            width: 200px;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        /* Form section */
+        section.form-section {
+            padding: 20px;
+            background: #f4f4f4;
+        }
+
+        form {
+            max-width: 400px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        input,
+        textarea {
+            padding: 10px;
+            border: 1px solid #aaa;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: darkred;
+        }
+
+        footer {
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar">
+        <h2>Menu</h2>
+        <a href="#home">HOME</a>
+        <a href="#about">ABOUT</a>
+        <a href="#contact">CONTACT</a>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Text + Image Section -->
+        <section id="home" class="content-section">
+            <div class="content">
+                <h2>Created by John</h2>
+                <p>This is a simple project layout that looks like a real-time website.</p>
+            </div>
+            <div class="image">
+                <img src="img.png" alt="Project Image">
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about">
+            <h2>About</h2>
+            <p>This website was created as a practice project using HTML and CSS. It includes a sidebar, content area,
+                and form.</p>
+        </section>
+
+        <!-- Form Section -->
+        <section id="contact" class="form-section">
+            <h2 style="text-align:center;">Contact Form</h2>
+            <form>
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Message" rows="4" required></textarea>
+                <button type="submit">Send</button>
+            </form>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            © 2025 | Contact: john72@gmail.com
+        </footer>
+    </main>
+</body>
+
+</html>

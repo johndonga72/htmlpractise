@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Media & Links Example</title>
+    <style>
+        body {
+            font-family: Arial;
+            margin: 20px;
+            max-width: 900px;
+        }
+
+        .section {
+            background: #fff;
+            padding: 12px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, .06);
+            margin-bottom: 18px;
+        }
+
+        h2 {
+            color: #1b6;
+            margin-top: 0;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="section">
+        <h2>Image Link</h2>
+        <a href="https://example.com" target="_blank" rel="noopener noreferrer">
+            <img src="images/photo.jpg" alt="Sample photo" loading="lazy">
+        </a>
+    </div>
+
+    <div class="section">
+        <h2>Audio</h2>
+        <audio controls preload="metadata">
+            <source src="audio/track.mp3" type="audio/mpeg">
+            Your browser does not support audio.
+        </audio>
+    </div>
+
+    <div class="section">
+        <h2>Video</h2>
+        <video controls width="640" poster="images/poster.jpg" preload="metadata">
+            <source src="video/sample.mp4" type="video/mp4">
+            Your browser doesn't support video.
+        </video>
+    </div>
+
+    <div class="section">
+        <h2>Embed (iframe)</h2>
+        <div style="position:relative;padding-top:56.25%">
+            <iframe src="https://example.com" title="Example site"
+                style="position:absolute;top:0;left:0;width:100%;height:100%;border:0" loading="lazy"
+                sandbox="allow-same-origin allow-scripts"></iframe>
+        </div>
+    </div>
+</body>
+
+</html>

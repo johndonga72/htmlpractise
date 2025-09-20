@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Colored Table Example</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 60%;
+            margin: 20px;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: 1px solid black;
+        }
+
+        td {
+            background-color: #f9f9f9;
+            color: #333;
+            padding: 10px;
+            border: 1px solid black;
+        }
+
+        tr:nth-child(even) td {
+            background-color: #e6f7ff;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Student Marks Table with Colors</h2>
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Subject</th>
+            <th>Marks</th>
+        </tr>
+        <tr>
+            <td rowspan="2">John</td>
+            <td>Math</td>
+            <td>90</td>
+        </tr>
+        <tr>
+            <td>Science</td>
+            <td>85</td>
+        </tr>
+        <tr>
+            <td>Mary</td>
+            <td colspan="2">Absent</td>
+        </tr>
+    </table>
+
+</body>
+
+</html>

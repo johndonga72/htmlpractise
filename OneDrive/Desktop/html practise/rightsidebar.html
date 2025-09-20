@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>MY First Project</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            /* header on top */
+        }
+
+        header {
+            background-color: black;
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+            font-size: 20px;
+        }
+
+        .container {
+            display: flex;
+            flex: 1;
+        }
+
+        /* Main content on left */
+        main {
+            flex: 1;
+            padding: 20px;
+        }
+
+        /* Right sidebar */
+        nav.sidebar {
+            width: 200px;
+            background-color: #222;
+            color: white;
+            height: calc(100vh - 60px);
+            /* full height minus header */
+            display: flex;
+            flex-direction: column;
+            padding-top: 20px;
+        }
+
+        nav.sidebar a {
+            text-decoration: none;
+            background-color: red;
+            color: white;
+            padding: 10px 15px;
+            margin: 8px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        nav.sidebar a:hover {
+            background-color: darkred;
+        }
+
+        footer {
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        MY First Project
+    </header>
+
+    <div class="container">
+        <!-- Main content -->
+        <main>
+            <h2>Created by John</h2>
+            <p>This is a simple project layout with a right-hand sidebar.</p>
+        </main>
+
+        <!-- Right Sidebar -->
+        <nav class="sidebar">
+            <a href="#home">HOME</a>
+            <a href="#about">ABOUT</a>
+            <a href="#contact">CONTACT</a>
+        </nav>
+    </div>
+
+    <footer>
+        © 2025 | Contact: john72@gmail.com
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Styled Nav + Price Table</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background: #333;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            display: inline-block;
+            transition: background 0.3s;
+        }
+
+        nav a:hover {
+            background: #4CAF50;
+            border-radius: 5px;
+        }
+
+        /* Price Table */
+        .pricing-table {
+            display: flex;
+            justify-content: center;
+            margin: 40px;
+            gap: 20px;
+        }
+
+        .plan {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            width: 250px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .plan:hover {
+            transform: translateY(-10px);
+        }
+
+        .plan-header {
+            background: #4CAF50;
+            color: white;
+            padding: 20px;
+            border-radius: 10px 10px 0 0;
+            font-size: 20px;
+        }
+
+        .price {
+            font-size: 28px;
+            margin: 15px 0;
+            color: #333;
+        }
+
+        .features {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .features li {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            margin: 20px 0;
+            text-decoration: none;
+            border-radius: 20px;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #388E3C;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Products</a>
+        <a href="#">Pricing</a>
+        <a href="#">Contact</a>
+    </nav>
+
+    <!-- Pricing Table -->
+    <div class="pricing-table">
+        <div class="plan">
+            <div class="plan-header">Basic</div>
+            <div class="price">₹499/mo</div>
+            <ul class="features">
+                <li>5 Projects</li>
+                <li>10GB Storage</li>
+                <li>Email Support</li>
+            </ul>
+            <a href="#" class="btn">Choose Plan</a>
+        </div>
+
+        <div class="plan">
+            <div class="plan-header">Pro</div>
+            <div class="price">₹999/mo</div>
+            <ul class="features">
+                <li>20 Projects</li>
+                <li>50GB Storage</li>
+                <li>Priority Support</li>
+            </ul>
+            <a href="#" class="btn">Choose Plan</a>
+        </div>
+
+        <div class="plan">
+            <div class="plan-header">Enterprise</div>
+            <div class="price">₹1999/mo</div>
+            <ul class="features">
+                <li>Unlimited Projects</li>
+                <li>200GB Storage</li>
+                <li>Dedicated Support</li>
+            </ul>
+            <a href="#" class="btn">Choose Plan</a>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+</html>
+
+<head>
+    <style>
+        .grid-container {
+            display: gid;
+            grid-template-columns: 200px 1fr;
+            grid-template-rows: 60px 1fr 40px;
+            grid-template-areas:
+                "header" "header"
+                "sidebar" "content"
+                "footer" "footer";
+            gap: 100px;
+            height: 100vh;
+        }
+
+        .header {
+            grid-area: header;
+            background: #4CAF50;
+            color: white;
+        }
+
+
+
+        .sidebar {
+            grid-area: sidebar;
+            background: #2196F3;
+            color: white;
+        }
+
+
+
+        .content {
+            grid-area: content;
+            background: #f4f4f4;
+        }
+
+
+
+        .footer {
+            grid-area: footer;
+            background: #333;
+            color: white;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div class="grid-container">
+        <header class="header">Header</header>
+        <nav class="sidebar">Sidebar</nav>
+        <main class="content">Main Content</main>
+        <footer class="footer">Footer</footer>
+</body>
+</div>
+<html>

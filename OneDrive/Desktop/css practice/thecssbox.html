@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Layout - Box Model</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .card {
+            width: 300px;
+            background: #fff;
+            border: 5px solid #4CAF50;
+
+            padding: 20px;
+
+            margin: 30px;
+
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        card h2 {
+            margin-top: 0;
+
+            color: #4CAF50;
+        }
+
+        .highlight {
+            background: #e6f7ff;
+            padding: 10px;
+            border-left: 4px solid #4CAF50;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+        <h2>Card Title</h2>
+        <p>
+            This is the <strong>content</strong> area of the card.
+            Padding gives space inside, margin gives space outside,
+            and border surrounds the box.
+        </p>
+
+        <div class="highlight">
+            Example of padding & border inside the card.
+        </div>
+    </div>
+
+</body>
+
+</html>

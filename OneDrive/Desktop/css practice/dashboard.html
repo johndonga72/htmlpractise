@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <style>
+        .dashboard {
+            display: grid;
+            grid-template-areas:
+                "header header"
+                "sidebar main"
+                "footer footer";
+            grid-template-columns: 200px 1fr;
+            /* sidebar + main */
+            grid-template-rows: 60px 1fr 40px;
+            height: 100vh;
+            gap: 10px;
+        }
+
+        .header {
+            grid-area: header;
+            background: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .sidebar {
+            grid-area: sidebar;
+            background: #2196F3;
+            color: white;
+            padding: 10px;
+        }
+
+        .main {
+            grid-area: main;
+            background: #f4f4f4;
+            padding: 10px;
+        }
+
+        .footer {
+            grid-area: footer;
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="dashboard">
+        <div class="header">Dashboard Header</div>
+        <div class="sidebar">Sidebar Menu</div>
+        <div class="main">Main Content Area</div>
+        <div class="footer">Footer</div>
+    </div>
+</body>
+
+</html>

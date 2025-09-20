@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sticky Navbar Example</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Fixed Header */
+        header {
+            position: fixed;
+            background-color: #333;
+            color: white;
+            width: 100%;
+            text-align: center;
+            padding: 15px;
+            font-size: 22px;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+
+        }
+
+        /* Sticky Navbar */
+        nav {
+            position: sticky;
+            top: 60px;
+            background-color: #444;
+            padding: 10px 0;
+            text-align: center;
+            z-index: 999;
+
+
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            display: inline-block;
+        }
+
+        nav a:hover {
+            background: #666;
+            border-radius: 5px;
+        }
+
+        /* Page Content */
+        section {
+            padding: 100px 20px;
+            height: 500px;
+        }
+
+        #home {
+            background: #f4f4f4;
+        }
+
+        #about {
+            background: #e2f7e2;
+        }
+
+        #services {
+            background: #e2e7f7;
+        }
+
+        #contact {
+            background: #f7e2e2;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Fixed Header -->
+    <header>
+        🚀 My Website Header
+    </header>
+
+    <!-- Sticky Navbar -->
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <!-- Sections -->
+    <section id="home">
+        <h2>Home</h2>
+        <p>Welcome to the homepage.</p>
+    </section>
+    <section id="about">
+        <h2>About</h2>
+        <p>All about our company.</p>
+    </section>
+    <section id="services">
+        <h2>Services</h2>
+        <p>What we offer.</p>
+    </section>
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>Get in touch with us.</p>
+    </section>
+
+</body>
+
+</html>

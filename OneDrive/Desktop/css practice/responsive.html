@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexbox Navbar & Cards</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            /* brand left, links right */
+            align-items: center;
+            background: #333;
+            padding: 10px 20px;
+            position: static;
+
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 16px;
+        }
+
+        .navbar a:hover {
+            color: #f39c12;
+        }
+
+        /* Card Container */
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+
+
+        .card {
+            background: #f4f4f4;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            padding: 20px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .card h3 {
+            margin: 15px 0 10px;
+        }
+
+        .card p {
+            color: #555;
+            font-size: 14px;
+        }
+
+        .card button {
+            margin-top: 10px;
+            padding: 10px 15px;
+            background: #3498db;
+            border: none;
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .card button:hover {
+            background: #2980b9;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .card {
+                width: 100%;
+                /* full width on small screens */
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <a href="#">Brand</a>
+        <div>
+            <a href="#">Home</a>
+            <a href="#">Products</a>
+            <a href="#">Contact</a>
+        </div>
+    </div>
+
+    <!-- Card Layout -->
+    <div class="card-container">
+        <div class="card">
+            <img src="https://via.placeholder.com/300x150" alt="Product 1">
+            <h3>Product 1</h3>
+            <p>This is an amazing product description.</p>
+            <button>Buy Now</button>
+        </div>
+
+        <div class="card">
+            <img src="https://via.placeholder.com/300x150" alt="Product 2">
+            <h3>Product 2</h3>
+            <p>This product is also awesome!</p>
+            <button>Buy Now</button>
+        </div>
+
+        <div class="card">
+            <img src="https://via.placeholder.com/300x150" alt="Product 3">
+            <h3>Product 3</h3>
+            <p>You will love this product.</p>
+            <button>Buy Now</button>
+        </div>
+    </div>
+
+</body>
+
+</html>
